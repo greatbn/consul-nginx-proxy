@@ -23,8 +23,11 @@ echo Installing Docker Compose
 curl -L https://github.com/docker/compose/releases/download/1.6.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
+echo Install consul-server
+docker run -d -p 8500:8500 --name consul progrium/consul -server -bootstrap
+
 echo Install swarm
-docker run -d swarm join --addr=10.30.0.10:2375 consul://10.30.0.2:8500/swarm
+docker run -d swarm join --addr=10.30.0.10:2375 consul://10.30.0.10:8500/swarm
 
 echo Install swarm-manager
 docker run -d -p 2376:2375 swarm manage consul://10.30.0.2:8500/swarm

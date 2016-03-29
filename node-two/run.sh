@@ -24,4 +24,4 @@ curl -L https://github.com/docker/compose/releases/download/1.6.2/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
 echo Install swarm
-docker run -d swarm join --addr=10.30.0.11:2375 consul://10.30.0.2:8500/swarm
+docker run -d swarm join --addr=10.30.0.11:2375 consul://10.30.0.10:8500/swarm

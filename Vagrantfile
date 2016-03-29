@@ -28,7 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       n2.vm.network "private_network", ip: "10.30.0.11"
       n2.vm.provision :shell, path: "node-two/run.sh"
   end
-  
+
   config.vm.define "proxy" do |gateway|
       gateway.vm.hostname = "proxy"
       gateway.vm.network "private_network", ip: "10.30.0.2"

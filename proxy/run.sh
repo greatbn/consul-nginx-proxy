@@ -25,6 +25,3 @@ chmod +x /usr/local/bin/docker-compose
 
 echo Install nginx-proxy
 docker run -d -p 80:80 -e DEFAULT_HOST=sapham.net -e DOCKER_HOST=tcp://10.30.0.10:2376 --name proxy jwilder/nginx-proxy
-
-echo Install consul-server
-docker run -d -p 8500:8500 --name consul progrium/consul -server -bootstrap
