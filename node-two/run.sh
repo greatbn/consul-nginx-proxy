@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo su -
+
 echo Update
 apt-get update && \
     apt-get install -y curl
@@ -8,9 +9,9 @@ apt-get update && \
 echo Install git
 apt-get install -y git
 
-echo Fetching consul-nginx-proxy...
+echo Fetching consul-nginx-proxy ...
 git clone https://github.com/greatbn/consul-nginx-proxy.git  /build
-cd /build/node-two
+cd /build/node-one
 
 echo Installing Docker ...
 curl -sSL https://get.docker.io/  | sh
