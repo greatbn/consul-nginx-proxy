@@ -20,7 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "proxy" do |gateway|
       gateway.vm.hostname = "proxy"
       gateway.vm.network "private_network", ip: "10.30.0.2"
-      gateway.vm.provision :shell, path: "gateway/run.sh"
+      gateway.vm.provision :shell, path: "proxy/run.sh"
   end
 
   config.vm.define "node-one" do |n1|

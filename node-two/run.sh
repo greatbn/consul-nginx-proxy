@@ -1,26 +1,21 @@
 #!/bin/bash
 
 sudo su -
+echo Update
+apt-get update && \
+    apt-get install -y curl
 
 echo Install git
 apt-get install -y git
 
-echo Fetching microservices-swarm-consul ...
+echo Fetching consul-nginx-proxy...
 git clone https://github.com/greatbn/consul-nginx-proxy.git  /build
-cd /build/node-one
+cd /build/node-two
 
 echo Installing Docker ...
-apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" \
-    > /etc/apt/sources.list.d/docker.list
+curl -sSL https://get.docker.io/  | sh
 
-apt-get update && \
-    apt-get install -y linux-image-extra-$(uname -r)
-
-apt-get update && \
-    apt-get install -y docker-engine
-
-cp /build/agent-one/docker /etc/default/docker
+cp /build/node-two/docker /etc/default/docker
 service docker restart
 
 echo Installing Docker Compose
