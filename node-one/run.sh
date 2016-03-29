@@ -6,9 +6,6 @@ echo Update
 apt-get update && \
     apt-get install -y curl
 
-echo Install git
-apt-get install -y git
-
 echo Fetching consul-nginx-proxy ...
 git clone https://github.com/greatbn/consul-nginx-proxy.git  /build
 cd /build/node-one
@@ -30,4 +27,4 @@ echo Install swarm
 docker run -d swarm join --addr=10.30.0.10:2375 consul://10.30.0.10:8500/swarm
 
 echo Install swarm-manager
-docker run -d -p 2376:2375 swarm manage consul://10.30.0.2:8500/swarm
+docker run -d -p 2376:2375 swarm manage consul://10.30.0.10:8500/swarm
