@@ -17,12 +17,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.cpus = 2
   end
 
-  config.vm.define "proxy" do |gateway|
-      gateway.vm.hostname = "proxy"
-      gateway.vm.network "private_network", ip: "10.30.0.2"
-      gateway.vm.provision :shell, path: "proxy/run.sh"
-  end
-
   config.vm.define "node-one" do |n1|
       n1.vm.hostname = "node-one"
       n1.vm.network "private_network", ip: "10.30.0.10"
@@ -33,5 +27,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       n2.vm.hostname = "node-two"
       n2.vm.network "private_network", ip: "10.30.0.11"
       n2.vm.provision :shell, path: "node-two/run.sh"
+  end
+  
+  config.vm.define "proxy" do |gateway|
+      gateway.vm.hostname = "proxy"
+      gateway.vm.network "private_network", ip: "10.30.0.2"
+      gateway.vm.provision :shell, path: "proxy/run.sh"
   end
 end
